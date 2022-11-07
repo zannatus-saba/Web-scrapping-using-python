@@ -38,4 +38,4 @@ recovery: the total number of recoveries per state or territory
 
 hospitalization: the total number of hospitalizations per state or territory
 
-I will come up with one XPath selector path per column of the <table>. Each completed column in the data frame and each XPath selector used to identify the <  td  > in the <  table  > for that column.
+I will come up with one XPath selector path per column of the <  table   >. Each completed column in the data frame and each XPath selector used to identify the <  td  > in the <  table  > for that column.
