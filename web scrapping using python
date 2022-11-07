@@ -1,0 +1,69 @@
+import pandas as pd
+from lxml import html
+from lxml import etree
+import urllib3
+
+imdburl = "https://www.imdb.com/title/tt0093779/"
+
+httpmng = urllib3.PoolManager()
+
+resp = httpmng.request('GET', imdburl)
+
+tagtree = html.fromstring(resp.data)
+
+#title
+
+xp1 = '//div[@class="ipc-page-content-container ipc-page-content-container--center"]/div[@class="ipcpagebackground-sc-80d4314-0 fjPRnj"]/div[@class="Imdbtitle-sc-80d4314-1 fbQftq"]/h1/text()'
+
+imdb_title = tagtree.xpath(xp1)
+
+imdb_title[0]
+
+#genre
+
+xp2= '//div[@class="ipc-chip-list__scroller"]/div[@class="ipc-chip-list--baseAlt ipc-chip-list-sc-16ede01-9 bbiYSi sc-2a827f80-11 kSXeJ"]/div[@class="genre-sc-16ede01-5 ggbGKe"]/span/text()'
+
+imdb_genre = tagtree.xpath(xp2)
+
+imdb_genre[0]
+
+#Rating
+
+xp3 = '//div[@class="ipc-button__text"]/div[@class="Rating-bar__base-button-sc-f6306ea-3 loTxjn"]/div[@class="AggregateRatingButton__ContentWrap-sc-7ab21ed2-0 fAePGh"]/div[@class="AggregateRatingButton__Rating-sc-7ab21ed2-2 kYEdvH"]/span/text()'
+
+imdb_rating = tagtree.xpath(xp3)
+
+imdb_rating[0]
+
+#plot keywords
+
+xp4='//div[@class="ipc-title__wrapper"]/div[@class="storyline-plot-keywords-sc-55203d61-0 ciGQlL"]/a/text()'
+
+#Box office info
+
+xp5 = '//div[@class="ipc-title__wrapper"]/div[@class="title-boxoffice-sc-f65f65be-0 ktSkVi"]/div[class="ipcmetadatalist-sc-6d4f3f8c-0 ejRbxb"]/ul/text()'
+
+
+
+## Wikipedia page
+
+i7url = 'https://en.wikipedia.org/wiki/Statistics_of_the_COVID-19_pandemic_in_the_United_States'
+
+httpmng = urllib3.PoolManager()
+
+resp2 = httpmng.request('GET', i7url)
+
+tagtree2 = html.fromstring(resp2.data)
+
+i7xp = '//div[@class="mw-body-content mw-content-ltr"]/div[@class="mw-parser-output"]/table[1]'
+
+i7table = tagtree2.xpath(i7xp)
+
+tstring = etree.tostring(i7table[0], method='html')
+
+i7lists = pd.read_html(tstring)
+
+i7data = pd.DataFrame(i7lists[0])
+
+i7data.dtypes
+
