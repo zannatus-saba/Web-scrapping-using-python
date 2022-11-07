@@ -23,9 +23,7 @@ An important note here. Avoid using the tag attribute data-testid="" that IMDB u
 Wikipedia Tables 
 
 
-I will scrape data from a Wikipedia page on the United States COVID-19 situation. In particular, this webpage contains a table towards the middle that presents the number of cases, deaths, recoveries, and hospitalizations by state.
-
-img01
+I will scrape data from a Wikipedia page on the United States COVID-19 situation. In particular, this webpage contains a table towards the middle that presents the number of cases, deaths, recoveries, and hospitalizations by state. See the table (https://github.com/zannatus-saba/Web-scrapping-using-python/blob/main/img01.png)
 
 Will scrape the data from this table and create a data frame. The data frame will contain the following five columns:
 
